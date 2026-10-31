@@ -1,3 +1,35 @@
+<div align="center">
+
+# 🔬 Photon / Black Russia — разобранный клиент
+
+<p align="center">
+  <b>Содержимое Android-приложения, разложенное по файлам. Сам APK не выложен — только его потроха.</b>
+</p>
+
+<a href="https://t.me/raknetbrnews1">
+  <img src="https://img.shields.io/badge/📢_Telegram_Канал-@raknetbrnews1-0088cc?style=for-the-badge&logo=telegram&logoColor=white" alt="Наш Telegram Канал"/>
+</a>
+<a href="https://github.com/creepyside11/black">
+  <img src="https://img.shields.io/badge/🤖_Открытый_RakCRMP-Клиент_для_Black_Russia-black?style=for-the-badge&logo=github&logoColor=white" alt="Открытый RakCRMP"/>
+</a>
+<a href="https://blackrussia.online/">
+  <img src="https://img.shields.io/badge/🌐_Black_Russia-blackrussia.online-E0584B?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Официальный сайт"/>
+</a>
+
+</div>
+
+---
+
+## 📢 Наш канал и открытый проект
+
+Все свежие новости, патчи протокола, разборы клиентов и обходы античитов — в нашем Telegram-канале.
+👉 **[@raknetbrnews1](https://t.me/raknetbrnews1)** — подписывайся.
+
+У нас есть **открытый RakCRMP** — клиент для Black Russia, который позволяет запускать ботов на серверах игры. Код лежит открыто:
+👉 **[github.com/creepyside11/black](https://github.com/creepyside11/black)**
+
+---
+
 # Photon / Black Russia — разобранный клиент
 
 Содержимое Android-приложения, разложенное по файлам. **Сам APK здесь нет** —
