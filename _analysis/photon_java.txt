@@ -1,0 +1,170 @@
+
+========================================================================
+Lphoton/cheat/br/ActivityMain;
+========================================================================
+
+  --- <init> ---
+      ; регистров 1
+    0000: invoke-direct        {v0}, Activity;.<init>
+    0006: return-void          
+
+  --- onCreate ---
+      ; регистров 2
+    0000: invoke-super         {v0, v1}, Activity;.onCreate
+    0006: invoke-static        {v0}, Main;.start
+    000c: return-void          
+
+========================================================================
+Lphoton/cheat/br/DeviceInfoHelper;
+========================================================================
+
+  --- <init> ---
+      ; регистров 1
+    0000: invoke-direct        {v0}, Object;.<init>
+    0006: return-void          
+
+  --- getAndroidId ---
+      ; регистров 3
+    0000: invoke-virtual       {v2}, Context;.getContentResolver
+    0006: move-result-object   v0
+    0008: const-string         v1, 'android_id'
+    000c: invoke-static        {v0, v1}, Settings$Secure;.getString
+    0012: move-result-object   v0
+    0014: return-object        v0
+
+  --- getWebViewUserAgent ---
+      ; регистров 6
+    0000: invoke-static        {v5}, WebSettings;.getDefaultUserAgent
+    0006: move-result-object   v0
+    0008: return-object        v0
+    000a: move-exception       
+    000c: sget-object          v1, v0, Build$VERSION;.RELEASE : Ljava/lang/String;
+    0010: sget-object          v2, v0, Build;.MODEL : Ljava/lang/String;
+    0014: const-string         v3, ' '
+    0018: const-string         v4, ''
+    001c: invoke-virtual       {v2, v3, v4}, String;.replace
+    0022: move-result-object   v2
+    0024: filled-new-array     
+    002a: move-result-object   v1
+    002c: const-string         v2, 'Mozilla/5.0 (Linux; Android %s; %s) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36'
+    0030: invoke-static        {v2, v1}, String;.format
+    0036: move-result-object   v1
+    0038: return-object        v1
+
+  --- loadUUID ---
+      ; регистров 4
+    0000: const-string         v0, 'device_storage'
+    0004: const/4              v1, #0
+    0006: invoke-virtual       {v3, v0, v1}, Context;.getSharedPreferences
+    000c: move-result-object   v0
+    000e: const-string/jumbo   v1, 'uuid'
+    0014: const-string         v2, ''
+    0018: invoke-interface     {v0, v1, v2}, SharedPreferences;.getString
+    001e: move-result-object   v1
+    0020: return-object        v1
+
+  --- saveUUID ---
+      ; регистров 5
+    0000: const-string         v0, 'device_storage'
+    0004: const/4              v1, #0
+    0006: invoke-virtual       {v3, v0, v1}, Context;.getSharedPreferences
+    000c: move-result-object   v0
+    000e: invoke-interface     {v0}, SharedPreferences;.edit
+    0014: move-result-object   v1
+    0016: const-string/jumbo   v2, 'uuid'
+    001c: invoke-interface     {v1, v2, v4}, SharedPreferences$Editor;.putString
+    0022: move-result-object   v1
+    0024: invoke-interface     {v1}, SharedPreferences$Editor;.apply
+    002a: return-void          
+
+========================================================================
+Lphoton/cheat/br/Main$1;
+========================================================================
+
+  --- <init> ---
+      ; регистров 2
+    0000: iput-object          v1, v0, Main$1;.val$context : Landroid/content/Context;
+    0004: invoke-direct        {v0}, Object;.<init>
+    000a: return-void          
+
+  --- run ---
+      ; регистров 5
+    0000: const-string         v0, 'Photon'
+    0004: invoke-static        {v0}, System;.loadLibrary
+    000a: goto                 v16, ->+18
+    000c: move-exception       
+    000e: iget-object          v1, v4, Main$1;.val$context : Landroid/content/Context;
+    0012: invoke-virtual       {v0}, Exception;.toString
+    0018: move-result-object   v2
+    001a: const/4              v3, #1
+    001c: invoke-static        {v1, v2, v3}, Toast;.makeText
+    0022: move-result-object   v1
+    0024: invoke-virtual       {v1}, Toast;.show
+    002a: return-void          
+
+========================================================================
+Lphoton/cheat/br/Main;
+========================================================================
+
+  --- <init> ---
+      ; регистров 1
+    0000: invoke-direct        {v0}, Activity;.<init>
+    0006: return-void          
+
+  --- init ---
+      ; регистров 5
+    0000: new-instance         v0, Landroid/os/Handler;
+    0004: invoke-direct        {v0}, Handler;.<init>
+    000a: new-instance         v1, Lphoton/cheat/br/Main$1;
+    000e: invoke-direct        {v1, v4}, Main$1;.<init>
+    0014: const-wide/16        
+    0018: invoke-virtual       {v0, v1, v2, v3}, Handler;.postDelayed
+    001e: return-void          
+
+  --- openLink ---
+      ; регистров 4
+    0000: new-instance         v0, Landroid/content/Intent;
+    0004: const-string         v1, 'android.intent.action.VIEW'
+    0008: invoke-direct        {v0, v1}, Intent;.<init>
+    000e: invoke-static        {v3}, Uri;.parse
+    0014: move-result-object   v1
+    0016: invoke-virtual       {v0, v1}, Intent;.setData
+    001c: invoke-virtual       {v2, v0}, Context;.startActivity
+    0022: return-void          
+
+  --- openPortal ---
+      ; регистров 2
+    0000: sget-object          v0, v0, Main;.context : Landroid/content/Context;
+    0004: if-eqz               v0, ->+9
+    0008: sget-object          v0, v0, Main;.context : Landroid/content/Context;
+    000c: invoke-static        {v0, v1}, Main;.openLink
+    0012: return-void          
+
+  --- start ---
+      ; регистров 6
+    0000: sput-object          v5, v0, Main;.context : Landroid/content/Context;
+    0004: nop                  
+    0006: const-string         v0, 'android.permission.READ_EXTERNAL_STORAGE'
+    000a: invoke-virtual       {v5, v0}, Context;.checkSelfPermission
+    0010: move-result          v1
+    0012: const-string         v2, 'android.permission.WRITE_EXTERNAL_STORAGE'
+    0016: const/4              v3, #-1
+    0018: if-eq                v1, v3, ->+25
+    001c: invoke-virtual       {v5, v2}, Context;.checkSelfPermission
+    0022: move-result          v1
+    0024: if-ne                v1, v3, ->+21
+    0028: goto                 v5, ->+4229
+    002a: invoke-static        {v5}, Main;.init
+    0030: goto                 v21, ->+20767
+    0032: move-object          v1, v5
+    0034: check-cast           v1, Landroid/app/Activity;
+    0038: const/4              v3, #2
+    003a: new-array            v3, v3, [Ljava/lang/String;
+    003e: const/4              v4, #0
+    0040: op_4d                
+    0044: const/4              v0, #1
+    0046: op_4d                
+    004a: const/16             v0, #1000
+    004e: invoke-virtual       {v1, v3, v0}, Activity;.requestPermissions
+    0054: invoke-static        {v5}, Main;.init
+    005a: return-void          

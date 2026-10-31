@@ -1,0 +1,9 @@
+# Дамп — это в основном бинарь. Не трогаем переводы строк и не пытаемся
+# считать diff по .dex и .so: git должен держать их как есть.
+* -text
+*.dex binary
+*.so binary
+*.arsc binary
+*.png binary
+*.jpg binary
+*.bin binary
